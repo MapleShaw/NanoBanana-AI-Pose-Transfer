@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Pose Transfer Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --glow-color: hsl(200, 100%, 50%);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0A0A0A;
+        background-image: 
+          radial-gradient(at 20% 25%, hsl(212, 90%, 25%, 0.2) 0px, transparent 50%),
+          radial-gradient(at 75% 30%, hsl(280, 95%, 20%, 0.2) 0px, transparent 50%),
+          radial-gradient(at 90% 85%, hsl(190, 90%, 30%, 0.25) 0px, transparent 50%),
+          radial-gradient(at 20% 90%, hsl(340, 85%, 25%, 0.15) 0px, transparent 50%);
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0px); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+      .glass-pane {
+        background-color: rgba(18, 18, 18, 0.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .group:hover .glow-effect {
+        opacity: 0.15;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

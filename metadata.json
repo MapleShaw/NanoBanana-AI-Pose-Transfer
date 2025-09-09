@@ -1,0 +1,5 @@
+{
+  "name": "AI Pose Transfer Studio",
+  "description": "An application that uses AI to transfer the pose from a stick figure drawing onto a person in an uploaded photo. Upload a photo, draw a pose, and let Gemini generate a new image.",
+  "requestFramePermissions": []
+}
