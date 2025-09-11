@@ -157,7 +157,9 @@ const App: React.FC = () => {
           <Card title="Create Target Pose" step={2}>
             <Tabs<PoseMode> tabs={poseTabs} activeTab={activePoseMode} setActiveTab={setActivePoseMode} />
             <div className="mt-4 relative h-80">
-              {activePoseMode === 'Editor' && <PoseEditor ref={poseEditorRef} />}
+              <div className={`w-full h-full ${activePoseMode === 'Editor' ? 'block' : 'hidden'}`}>
+                <PoseEditor ref={poseEditorRef} />
+              </div>
               {activePoseMode === 'Presets' && <PosePresets selectedPose={selectedPreset} onSelect={setSelectedPreset} />}
               {activePoseMode === 'Draw' && <DrawingCanvas ref={drawingCanvasRef} />}
             </div>
