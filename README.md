@@ -2,7 +2,7 @@
 
 基于 Gemini AI 的智能姿态迁移平台 - 让照片中的人物摆出你想要的姿势
 
-![项目主界面截图](./assets/screen.png)
+![项目主界面截图](./assets/nano.gif)
 
 ## ✨ 核心功能
 
