@@ -3,8 +3,9 @@ import ImageUploader from './components/ImageUploader';
 import DrawingCanvas, { type DrawingCanvasRef } from './components/DrawingCanvas';
 import PoseEditor, { type PoseEditorRef } from './components/PoseEditor';
 import PosePresets from './components/PosePresets';
+import ImageSizeSelector from './components/ImageSizeSelector';
 import Tabs from './components/Tabs';
-import { generateImageFromPose } from './services/geminiService';
+import { generateImageFromPose, ImageDimensions, IMAGE_SIZE_OPTIONS } from './services/geminiService';
 import { type Pose } from './lib/poses';
 
 const Header: React.FC = () => (
@@ -63,6 +64,7 @@ const App: React.FC = () => {
   const [loadingMessage, setLoadingMessage] = useState(loadingMessages[0]);
   const [activePoseMode, setActivePoseMode] = useState<PoseMode>('Editor');
   const [selectedPreset, setSelectedPreset] = useState<Pose | null>(null);
+  const [selectedSize, setSelectedSize] = useState<ImageDimensions>(IMAGE_SIZE_OPTIONS[3]); // 默认选择全身竖屏
 
   const drawingCanvasRef = useRef<DrawingCanvasRef>(null);
   const poseEditorRef = useRef<PoseEditorRef>(null);
@@ -110,7 +112,7 @@ const App: React.FC = () => {
       const poseMimeType = poseHeader.match(/:(.*?);/)?.[1] || 'image/png';
       const { base64: originalImageBase64, mimeType: originalImageMimeType } = await fileToBase64(uploadedFile);
 
-      const resultBase64 = await generateImageFromPose(originalImageBase64, originalImageMimeType, poseBase64, poseMimeType);
+      const resultBase64 = await generateImageFromPose(originalImageBase64, originalImageMimeType, poseBase64, poseMimeType, selectedSize);
       
       if(resultBase64) {
         setGeneratedImageUrl(`data:image/png;base64,${resultBase64}`);
@@ -130,7 +132,7 @@ const App: React.FC = () => {
       setIsLoading(false);
       if (intervalRef.current) clearInterval(intervalRef.current);
     }
-  }, [uploadedFile, getPoseData]);
+  }, [uploadedFile, getPoseData, selectedSize]);
   
   const handleDownload = useCallback(() => {
     if (!generatedImageUrl) return;
@@ -166,6 +168,12 @@ const App: React.FC = () => {
           </Card>
         </div>
 
+        <div className="mb-8">
+          <Card title="Output Settings" step={3}>
+            <ImageSizeSelector selectedSize={selectedSize} onSizeChange={setSelectedSize} />
+          </Card>
+        </div>
+
         <div className="text-center mb-8">
           <button
             onClick={handleGeneration}
@@ -183,7 +191,7 @@ const App: React.FC = () => {
         
         <div className="glass-pane p-6 rounded-2xl shadow-2xl min-h-[400px] flex justify-center items-center relative">
           <h2 className="text-xl font-semibold text-slate-200 absolute top-6 left-6 flex items-center gap-3">
-             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-cyan-300 font-bold border border-white/20">3</span>
+             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-cyan-300 font-bold border border-white/20">4</span>
              Result
           </h2>
            {isLoading && (
