@@ -28,7 +28,7 @@
 2. **创建姿态** - 使用三种模式之一设计目标姿势
 3. **生成结果** - AI 自动完成姿态迁移
 
-![操作流程演示](./assets/demo.mp4)
+![操作流程演示](https://video.twimg.com/amplify_video/1967949042920706049/vid/avc1/1604x1080/RfPV-lfbakcM6O_I.mp4)
 
 ## 🛠️ 本地运行
 
