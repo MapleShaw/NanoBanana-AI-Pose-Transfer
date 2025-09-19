@@ -65,7 +65,7 @@
 
 ## 🌐 在线体验
 
-在 AI Studio 中查看应用：https://ai.studio/apps/drive/1nNLQWk7u2EZUERucQDK5g2MWgZ068MAR
+在 AI Studio 中查看应用：[https://ai.studio/apps/drive/1nNLQWk7u2EZUERucQDK5g2MWgZ068MAR](https://ai.studio/apps/drive/1nNLQWk7u2EZUERucQDK5g2MWgZ068MAR)
 
 ## 📋 更新日志
 
